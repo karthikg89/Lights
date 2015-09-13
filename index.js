@@ -5,6 +5,7 @@ var querystring = require('querystring');
 var access_token = process.env.LED_ACCESS_TOKEN;
 
 var app = express();
+app.use(express.static('static'));
 
 function post_data(i) {
     return querystring.stringify({
@@ -27,7 +28,7 @@ function post_options(i) {
 }
 
 
-app.get('/:id?', function(req, res) {
+app.get('/api/:id?', function(req, res) {
     var id = !isNaN(req.params.id) ? req.params.id : 100;
     var request = https.request(post_options(id), function(res2) {
         res2.setEncoding('utf8');
