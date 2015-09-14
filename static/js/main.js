@@ -22,11 +22,14 @@ var authenticate = function(password) {
 		data: {
 			password: password
 		}
-		
+
 	}).done(function(data) {
 		if (data.legit) {
 			$('.login').addClass('hidden');
 			$('.main').removeClass('hidden');
+            setTimeout(function() {
+                $('.login').css({'display': 'none'});
+            }, 500);
 		}
 	});
 }
