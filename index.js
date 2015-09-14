@@ -1,10 +1,25 @@
 var https = require('https');
 var express = require('express');
 var querystring = require('querystring');
+var session = require('express-session');
+var bodyParser = require('body-parser');
 
 var access_token = process.env.LED_ACCESS_TOKEN;
 
 var app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({
+	name: "kgizzle",
+  secret: process.env.LED_COOKIE_SECRET,
+	cookie: {
+		maxAge: 3600000
+	},
+	resave: false,
+	saveUninitialized: true
+	}
+));
 app.use(express.static('static'));
 
 function post_data(i) {
@@ -27,8 +42,25 @@ function post_options(i) {
     };
 }
 
+function genuuid() {
+	return new Date().getTime();
+}
+
+app.use('/api/auth', function(req, res) {
+	var sess = req.session;
+	if (req.body.password === process.env.LED_KEYCODE) {
+		sess.authenticated = true;
+	}
+	return res.send({
+		legit: !!sess.authenticated
+	});
+});
 
 app.get('/api/:id?', function(req, res) {
+		if (!req.session.authenticated) {
+			return res.send(400);
+		}
+
     var id = !isNaN(req.params.id) ? req.params.id : 100;
     var request = https.request(post_options(id), function(res2) {
         res2.setEncoding('utf8');

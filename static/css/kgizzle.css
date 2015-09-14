@@ -16,3 +16,23 @@ a {
 a:hover {
     background-color: #006daa;
 }
+
+.main, .login {
+		opacity: 1;
+		transition: all .5s ease;
+}
+
+input {
+    font-size: 5em;
+    line-height: normal;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+}
+
+.hidden {
+		opacity: 0;
+}
