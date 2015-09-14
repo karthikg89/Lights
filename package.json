@@ -1,0 +1,25 @@
+{
+  "name": "lights",
+  "version": "1.0.0",
+  "description": "Controls my room lights",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.13.3",
+    "body-parser": "^1.13.3",
+    "express-session": "^1.11.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karthikg89/Lights.git"
+  },
+  "author": "Karthik Gopalan, Lucas Serven",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/karthikg89/Lights/issues"
+  },
+  "homepage": "https://github.com/karthikg89/Lights#readme"
+}
