@@ -3,7 +3,6 @@
 
 
 $('main').hide();
-
 $('a').click(function(e) {
     e.preventDefault();
     $.ajax({
@@ -30,6 +29,7 @@ var authenticate = function(password) {
             setTimeout(function() {
                 $('.login').css({'display': 'none'});
             }, 500);
+			$('input').focusout();
 		}
 	});
 }
