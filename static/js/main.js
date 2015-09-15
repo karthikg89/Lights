@@ -10,10 +10,13 @@ $('a').click(function(e) {
     });
 });
 
+var prev = '';
+
 $('input').on('input', function(e) {
-	if (e.target.value.length == 4) {
+	if (e.target.value.length == 4 && e.target.value !== prev) {
 		authenticate(e.target.value);
 	}
+	prev = e.target.value;
 });
 
 var authenticate = function(password) {
