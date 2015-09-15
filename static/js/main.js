@@ -11,7 +11,9 @@ $('a').click(function(e) {
 });
 
 $('input').on('input', function(e) {
-	authenticate(e.target.value);
+	if (e.target.value.length == 4) {
+		authenticate(e.target.value);
+	}
 });
 
 var authenticate = function(password) {
