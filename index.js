@@ -59,7 +59,7 @@ app.use('/api/auth', function(req, res) {
 
 app.get('/api/:id?', function(req, res) {
 		if (!req.session.authenticated) {
-			return res.send(400);
+			return res.sendStatus(400);
 		}
 
     var id = !isNaN(req.params.id) ? req.params.id : 100;
