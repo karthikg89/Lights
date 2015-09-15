@@ -43,13 +43,11 @@ function post_options(i) {
     };
 }
 
-function genuuid() {
-	return new Date().getTime();
-}
+var keycode = process.env.LED_KEYCODE;
 
 app.use('/api/auth', function(req, res) {
 	var sess = req.session;
-	if (req.body.password === process.env.LED_KEYCODE) {
+	if (req.body.password === keycode) {
 		sess.authenticated = true;
 	}
 	return res.send({
