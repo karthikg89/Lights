@@ -5,6 +5,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 
 var access_token = process.env.LED_ACCESS_TOKEN;
+var cookie_secret = process.env.LED_COOKIE_SECRET;
 
 var app = express();
 
@@ -12,7 +13,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
 	name: "kgizzle",
-  secret: process.env.LED_COOKIE_SECRET,
+  secret: cookie_secret,
 	cookie: {
 		maxAge: 3600000
 	},
