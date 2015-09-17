@@ -2,7 +2,7 @@
 Controls my room lights
 
 ## Access
-The site is hosted [here](kgizzle.kushcode.com).  
+The site is hosted [here](http://kgizzle.kushcode.com).  
 Ill give you temporary access if you submit an awesome pull request!
 
 ## Todo
