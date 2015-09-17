@@ -1,7 +1,6 @@
 (function($) {
 'use strict';
 
-
 $('main').hide();
 $('a').click(function(e) {
     e.preventDefault();
@@ -17,6 +16,13 @@ $('input').on('input', function(e) {
 		authenticate(e.target.value);
 	}
 	prev = e.target.value;
+});
+
+$('#brightness_slider').on('change', function(e) {
+	e.preventDefault();
+	$.ajax({
+		url: '/api/brightness/' + e.target.value
+	});
 });
 
 var authenticate = function(password) {
