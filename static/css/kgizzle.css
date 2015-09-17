@@ -1,39 +1,60 @@
 a {
-    background-color: #55acee;
-    border-radius: 5em;
-    clear: both;
-    color: white;
-    display: inline-block;
-    float: left;
-    font-size: 1.5em;
-    margin-top: .5em;
-    padding: .6em 1em .6em;
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.15s ease;
+	background-color: #55acee;
+	border-radius: 5em;
+	clear: both;
+	color: white;
+	display: inline-block;
+	float: left;
+	font-size: 1.5em;
+	margin-top: .5em;
+	padding: .6em 1em .6em;
+	text-align: center;
+	text-decoration: none;
+	transition: all 0.15s ease;
 }
 
 a:hover {
-    background-color: #006daa;
+	background-color: #006daa;
 }
 
 .main, .login {
-		opacity: 1;
-		transition: all .5s ease;
+	opacity: 1;
+	transition: all .5s ease;
 }
 
-input {
-    font-size: 5em;
-    line-height: normal;
-    left: 50%;
-    position: absolute;
-    text-align: center;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    width: 50%;
+#auth {
+	font-size: 5em;
+	line-height: normal;
+	left: 50%;
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	width: 50%;
 }
 
 .hidden {
-		opacity: 0;
+	opacity: 0;
+}
+
+.rotate {
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	-ms-transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+/* For slider styling */
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+#brightness_slider {
+	position: absolute;
+	left: 8em;
+	top: 16.5em;
+	width: 25em;
 }
