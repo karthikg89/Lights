@@ -30,12 +30,12 @@ function post_data(i) {
     });
 }
 
-function post_options(i) {
+function post_options(i,func) {
     return {
         hostname: "api.particle.io",
             port: 443,
             method: 'POST',
-            path: "/v1/devices/53ff70066667574811370967/led",
+            path: "/v1/devices/53ff70066667574811370967/" + func,
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Content-Length': post_data(i).length
@@ -55,20 +55,38 @@ app.use('/api/auth', function(req, res) {
 	});
 });
 
+app.get('/api/brightness/:id?', function(req, res) {
+	if (!req.session.authenticated) {
+		return res.sendStatus(400);
+	}
+
+	var id = !isNaN(req.params.id) ? req.params.id : 1;
+	var request = https.request(post_options(id, "brightness"), function(res2) {
+		res2.setEncoding('utf8');
+		res2.on('data', function(chunk) {
+			console.log('Response: ' + chunk);
+		});
+		res.end();
+	});
+	
+	request.write(post_data(id, 'brightness'));
+	request.end();
+});
+
 app.get('/api/:id?', function(req, res) {
 		if (!req.session.authenticated) {
 			return res.sendStatus(400);
 		}
 
     var id = !isNaN(req.params.id) ? req.params.id : 100;
-    var request = https.request(post_options(id), function(res2) {
+    var request = https.request(post_options(id, "led"), function(res2) {
         res2.setEncoding('utf8');
         res2.on('data', function (chunk) {
             console.log('Response: ' + chunk);
         });
         res.end();
     });
-    request.write(post_data(id));
+    request.write(post_data(id, 'led'));
     request.end();
 });
 
