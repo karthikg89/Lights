@@ -15,7 +15,7 @@ app.use(session({
 	name: "kgizzle",
   secret: cookie_secret,
 	cookie: {
-		maxAge: 3600000
+		maxAge: null
 	},
 	resave: false,
 	saveUninitialized: true
