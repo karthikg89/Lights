@@ -7,6 +7,13 @@ $('a').click(function(e) {
     $.ajax({
           url: e.target.href
     });
+		$('#color_sliders').addClass('off');
+		$('#brightness_slider').removeClass('off');
+});
+
+$('#picker').on('click', function(e) {
+	$('#color_sliders').removeClass('off');
+	$('#brightness_slider').addClass('off');
 });
 
 var prev = '';
@@ -24,6 +31,15 @@ $('#brightness_slider').on('change', function(e) {
 		url: '/api/brightness/' + e.target.value
 	});
 });
+
+$('#color_sliders input').on('change', function(e) {
+	e.preventDefault();
+	var color = parseInt($('#red').val()) << 16 | parseInt($('#green').val()) << 8 | parseInt($('#blue').val());
+	$.ajax({
+		url: '/api/color/' + color
+	});
+});
+
 
 var authenticate = function(password) {
 	$.ajax({

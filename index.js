@@ -55,6 +55,24 @@ app.use('/api/auth', function(req, res) {
 	});
 });
 
+app.get('/api/color/:id?', function(req, res) {
+	if (!req.session.authenticated) {
+	  return res.sendStatus(400);
+	}
+	
+	var id = !isNaN(req.params.id) ? req.params.id : "0";
+  var request = https.request(post_options(id, "color"), function(res2) {
+    res2.setEncoding('utf8');
+    res2.on('data', function(chunk) {
+      console.log('Color Response: ' + chunk);
+    });
+    res.end();
+  });
+
+  request.write(post_data(id, 'color'));
+  request.end();	
+});
+
 app.get('/api/brightness/:id?', function(req, res) {
 	if (!req.session.authenticated) {
 		return res.sendStatus(400);
@@ -64,7 +82,7 @@ app.get('/api/brightness/:id?', function(req, res) {
 	var request = https.request(post_options(id, "brightness"), function(res2) {
 		res2.setEncoding('utf8');
 		res2.on('data', function(chunk) {
-			console.log('Response: ' + chunk);
+			console.log('Brightness Response: ' + chunk);
 		});
 		res.end();
 	});
@@ -82,7 +100,7 @@ app.get('/api/:id?', function(req, res) {
     var request = https.request(post_options(id, "led"), function(res2) {
         res2.setEncoding('utf8');
         res2.on('data', function (chunk) {
-            console.log('Response: ' + chunk);
+            console.log('State Response: ' + chunk);
         });
         res.end();
     });

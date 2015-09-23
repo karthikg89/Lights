@@ -38,6 +38,10 @@ a:hover {
 	opacity: 0;
 }
 
+.off {
+	display: none;
+}
+
 .rotate {
 	-webkit-transform: rotate(-90deg);
 	-moz-transform: rotate(-90deg);
@@ -50,6 +54,18 @@ a:hover {
 
 input[type=range]:focus {
   outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+#color_sliders {
+	left: 8em;
+	position: absolute;
+	top: 50%;
+}
+
+#color_sliders input {
+	display: block;
+	margin-bottom: .5em;
+	width: 25em;
 }
 
 #brightness_slider {
