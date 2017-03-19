@@ -7,11 +7,11 @@ Ill give you temporary access if you submit an awesome pull request!
 
 ## Todo
 - [x] Add brightness slider.
-- [ ] Add color picker.
-  - [ ] Add new state option to spark core.
-  - [ ] Add link to page.
-  - [ ] Make slider appear when link clicked.
-  - [ ] Register new endpoint/spark function.
+- [x] Add color picker.
+  - [x] Add new state option to spark core.
+  - [x] Add link to page.
+  - [x] Make slider appear when link clicked.
+  - [x] Register new endpoint/spark function.
 - [ ] Make the brightness slider more sexy.
 
 
